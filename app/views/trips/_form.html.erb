@@ -1,0 +1,54 @@
+<%= form_with(model: trip, local: true) do |form| %>
+  <% if trip.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(trip.errors.count, "error") %> prohibited this trip from being saved:</h2>
+
+      <ul>
+        <% trip.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+<br/>
+  <div class="card">
+    <div class="card-header">
+      <h4>Trip</h4>
+    </div>
+    <div class="card-body">
+  <div class="field form-group">
+    <%= form.text_field :group_name, class:"form-control", placeholder:'Enter your group name'%>
+  </div>
+
+  <div class="field form-group">
+    <%= form.text_field :email, class:"form-control", placeholder:'Enter your email' %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.date_select :when, class:"form-control" %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.text_area :jobs, class:"form-control", placeholder:'What do you want to do?' %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.text_field :escursions, class:"form-control", placeholder:'Would you like to do any excursions?' %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.text_area :additional_info, class:"form-control", placeholder:'Anything else we should know?' %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.number_field :user_id, id: :trip_user_id, class:"form-control", value:current_user.id, type: :hidden %>
+  </div>
+
+<br/>
+  <div class="actions">
+    <%= form.submit class:'btn btn-secondary' %>
+  </div>
+    </div>
+  </div>
+
+<% end %>

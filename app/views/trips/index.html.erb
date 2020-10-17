@@ -1,0 +1,43 @@
+
+<br/>
+<div class="card">
+  <div class="card-header">
+    <h1>Trips</h1>
+  </div>
+  <div class="card-body">
+    <table class="table table-hover table-bordered">
+      <thead class='thead-dark'>
+        <tr>
+          <th scope="col">Group name</th>
+          <th scope="col">Email</th>
+          <th scope="col">When</th>
+          <th scope="col">Jobs</th>
+          <th scope="col">Excursions</th>
+          <th scope="col">Additional info</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody class="table-warning">
+        <% @trips.each do |trip| %>
+          <% if trip.user == current_user %>
+          <tr scope='row'>
+            <td><%= trip.group_name %></td>
+            <td><%= trip.email %></td>
+            <td><%= trip.when %></td>
+            <td><%= trip.jobs %></td>
+            <td><%= trip.escursions %></td>
+            <td><%= trip.additional_info %></td>
+            <td><%= link_to 'Show', trip %></td>
+            <td><%= link_to 'Edit', edit_trip_path(trip) %></td>
+            <td><%= link_to 'Destroy', trip, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+          <% end%>
+        <% end %>
+      </tbody>
+    </table>
+
+  </div>
+</div>
+<br/>
+<%= link_to 'New Trip', new_trip_path, class:'btn btn-secondary' %>
