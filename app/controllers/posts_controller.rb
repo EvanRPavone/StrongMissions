@@ -12,7 +12,6 @@ class PostsController < ApplicationController
     # GET /trips/1
     # GET /trips/1.json
     def show
-      @post
     end
   
     # GET /trips/new
