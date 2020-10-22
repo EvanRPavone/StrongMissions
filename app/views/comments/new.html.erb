@@ -1,0 +1,22 @@
+<div class="card">
+  <div class="card-header">
+    <% if @comment.post %>
+        <h1>New Comment for <%= @comment.post.name %></h1>
+    <% else %>
+        <h1>New Comment</h1>
+    <% end %>
+  </div>
+  <div class="card-body">
+    <%= form_for([@comment.post,@comment]) do |f|%>
+
+    <%= f.hidden_field :post_id %>
+  <div class="field form-group">
+    <%= f.text_area :content, class:"form-control", placeholder:'Enter your comment'  %>
+  </div>
+  <div class="actions">
+    <%= f.submit class:'btn btn-secondary'%>
+  </div>
+
+    <% end %>
+  </div>
+</div>

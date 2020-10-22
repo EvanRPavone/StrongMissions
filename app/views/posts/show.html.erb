@@ -1,0 +1,27 @@
+<br/>
+<div class="card">
+  <div class="card-header">
+    <h1><%= @post.name %></h1>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">By: <%= @post.user.email %></h5>
+    <p class="card-text"><%= @post.experience %></p>
+  </div>
+</div>
+<br/>
+<%= link_to 'See all comments', post_comments_path(@post), class:'btn btn-secondary' %>
+<br/><br/>
+<%= link_to 'Add a new comment', new_post_comment_path(@post), class:'btn btn-secondary' %>
+<br/>
+<br/>
+<div class="card">
+  <div class="card-header">
+    <h1>Comments</h1>
+  </div>
+  <div class="card-body">
+    <% @post.comments.each do |c| %>
+        <h5 class="card-title"><%= c.user.email %> says:</h5>
+        <p class="card-text">"<%= link_to c.content, comment_path(c) %>"</p>
+    <% end %>
+  </div>
+</div>

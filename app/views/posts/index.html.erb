@@ -6,6 +6,8 @@
     <% @posts.each do |post| %>
     <h5 class="card-title"><%= post.name %></h5>
     <p class="card-text"><%= post.experience %></p>
+    <%= link_to 'Show', post_path(post), class:'btn btn-secondary' %>
+    <br/><br/>
     <% end %>
   </div>
 </div>

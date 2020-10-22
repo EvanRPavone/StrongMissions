@@ -1,0 +1,15 @@
+<div class="card">
+  <div class="card-header">
+    <h1>Edit Comment</h1>
+  </div>
+  <div class="card-body">
+    <%= form_for(@comment) do |f|%>
+      <div class="field form-group">
+        <%= f.text_field :content, class:"form-control", placeholder:'Edit your comment' %>
+      </div>
+      <div class="actions">
+        <%= f.submit class:'btn btn-secondary' %>
+      </div>
+    <% end %>
+  </div>
+</div>

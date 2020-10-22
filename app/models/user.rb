@@ -5,4 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :trips
   has_many :posts
+  has_many :comments
+  has_many :commented_posts, through: :comments, source: :post
 end

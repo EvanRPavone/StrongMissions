@@ -1,0 +1,17 @@
+<div class="card">
+  <div class="card-header">
+    <% if @post %>
+        <h1>Comments for <%= @post.name%></h1>
+    <% else %>
+        <h1>All Comments</h1>
+    <% end %>
+  </div>
+  <div class="card-body">
+    <% @comments.each do |c|%>
+        <h5 class="card-title"><%= c.user.email %> says:</h5>
+        <p class="card-text">"<%= c.content%>"</p>
+        <p class="card-text">About this post: <strong><%= link_to c.post.name, post_path(c.post_id) %></strong></p>
+    <% end %>
+  </div>
+</div>
+<br/>
