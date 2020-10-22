@@ -1,0 +1,1 @@
+join table with 2 foreign keys and 1 user submittable attribute
