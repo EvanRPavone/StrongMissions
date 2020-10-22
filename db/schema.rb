@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_17_012451) do
+ActiveRecord::Schema.define(version: 2020_10_22_142322) do
+
+  create_table "posts", force: :cascade do |t|
+    t.string "name"
+    t.string "experience"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_posts_on_user_id"
+  end
 
   create_table "trips", force: :cascade do |t|
     t.string "group_name"

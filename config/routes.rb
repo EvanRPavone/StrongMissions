@@ -5,7 +5,14 @@ Rails.application.routes.draw do
     passwords: 'users/passwords',
     registrations: 'users/registrations'
   }
+
+  resources :users do
+    resources :trips
+    resources :posts
+  end
+
   resources :trips
+  resources :posts
   # get 'home/index'
   root to: "home#index"
   get 'home/about'

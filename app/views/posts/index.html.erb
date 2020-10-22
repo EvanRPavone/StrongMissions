@@ -1,0 +1,13 @@
+<div class="card">
+  <div class="card-header">
+    <h1>Experiences</h1>
+  </div>
+  <div class="card-body">
+    <% @posts.each do |post| %>
+    <h5 class="card-title"><%= post.name %></h5>
+    <p class="card-text"><%= post.experience %></p>
+    <% end %>
+  </div>
+</div>
+<br/>
+<%= link_to 'New Post', new_post_path, class:'btn btn-secondary' %>

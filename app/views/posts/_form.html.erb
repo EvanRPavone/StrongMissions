@@ -1,0 +1,38 @@
+<%= form_with(model: post, local: true) do |form| %>
+  <% if post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(post.errors.count, "error") %> prohibited this trip from being saved:</h2>
+
+      <ul>
+        <% post.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+<br/>
+  <div class="card">
+    <div class="card-header">
+      <h4>Your Experience With Strong Missions</h4>
+    </div>
+    <div class="card-body">
+  <div class="field form-group">
+    <%= form.text_field :name, class:"form-control", placeholder:'Enter your group name'%>
+  </div>
+
+  <div class="field form-group">
+    <%= form.text_area :experience, class:"form-control", placeholder:'Explain your experience helping Strong Missions' %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.number_field :user_id, id: :post_user_id, class:"form-control", value:current_user.id, type: :hidden %>
+  </div>
+
+<br/>
+  <div class="actions">
+    <%= form.submit class:'btn btn-secondary' %>
+  </div>
+    </div>
+  </div>
+
+<% end %>
