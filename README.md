@@ -4,13 +4,13 @@ This application/website is used to plan a trip for strong missions, the strong 
 
 # INSTALLATION
 
-1. run 'bundle install' in your terminal
+1. run `bundle install` in your terminal
 
-2. after bundle, run 'rake db:migrate'
+2. after bundle, run `rake db:migrate`
     - If your get an error like, "error Couldn't find an integrity file", run this in your terminal, 'yarn install --check-files', then do rake db:migrate.
 
-3. If you are using a localhost, run rails s and open your browser and type localhost:3000 and you should open up the website home page.
-    - sometimes running 'rails s' will give you some errors, just rerun it until it doesn't
+3. If you are using a localhost, run `rails s` and open your browser and type `localhost:3000` and you should open up the website home page.
+    - sometimes running 'rails s' will give you some errors, just rerun it until it doesn't, usually the second time works
 
 4. Enjoy
 
@@ -20,11 +20,11 @@ This application/website is used to plan a trip for strong missions, the strong 
 
 2. In ability.rb in your models foler, add this line of code and refresh the page. This will let any user access the admin panel.
 
-    'user ||= User.new # guest user (not logged in)
+    `user ||= User.new # guest user (not logged in)
     can :manage, :all <-------- ADD THIS!!
     if user.superadmin_role?
         (...)
-    end'
+    end`
 
 3. To add yourself to the admin role in the admin panel
     - Click Admin Panel in the navigation bar, make sure you are logged in, and then click users.
