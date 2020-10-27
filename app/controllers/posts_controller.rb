@@ -3,28 +3,28 @@ class PostsController < ApplicationController
     before_action :authenticate_user!, except: [:index, :show]
     before_action :correct_user, only: [:edit, :update, :destroy]
   
-    # GET /trips
-    # GET /trips.json
+    # GET /posts
+    # GET /posts.json
     def index
       @posts = Post.all
     end
   
-    # GET /trips/1
-    # GET /trips/1.json
+    # GET /posts/1
+    # GET /posts/1.json
     def show
     end
   
-    # GET /trips/new
+    # GET /posts/new
     def new
       @post = current_user.posts.build
     end
   
-    # GET /trips/1/edit
+    # GET /posts/1/edit
     def edit
     end
   
-    # POST /trips
-    # POST /trips.json
+    # POST /posts
+    # POST /posts.json
     def create
       # @trip = Trip.new(trip_params)
       @post = current_user.posts.build(post_params)
@@ -40,8 +40,8 @@ class PostsController < ApplicationController
       end
     end
   
-    # PATCH/PUT /trips/1
-    # PATCH/PUT /trips/1.json
+    # PATCH/PUT /posts/1
+    # PATCH/PUT /posts/1.json
     def update
       respond_to do |format|
         if @post.update(post_params)
@@ -54,8 +54,8 @@ class PostsController < ApplicationController
       end
     end
   
-    # DELETE /trips/1
-    # DELETE /trips/1.json
+    # DELETE /posts/1
+    # DELETE /posts/1.json
     def destroy
       @post.destroy
       respond_to do |format|
