@@ -27,7 +27,7 @@ class CommentsController < ApplicationController
      if @comment.save
        redirect_to comments_path
      else
-       render :new
+       render new_comment_path
      end
    end
  

@@ -17,7 +17,7 @@ class TripsController < ApplicationController
   # GET /trips/new
   def new
     # @trip = Trip.new
-    @trip = current_user.trips.build
+    @trip = Trip.new
   end
 
   # GET /trips/1/edit
@@ -29,29 +29,20 @@ class TripsController < ApplicationController
   def create
     # @trip = Trip.new(trip_params)
     @trip = current_user.trips.build(trip_params)
-
-    respond_to do |format|
-      if @trip.save
-        format.html { redirect_to @trip, notice: 'Trip was successfully created.' }
-        format.json { render :show, status: :created, location: @trip }
-      else
-        format.html { render :new }
-        format.json { render json: @trip.errors, status: :unprocessable_entity }
-      end
+    if @trip.save
+      redirect_to trips_path, notice: 'Trip was successfully created.'
+    else
+      redirect_to new_trip_path, notice: 'Cannot leave information blank.'
     end
   end
 
   # PATCH/PUT /trips/1
   # PATCH/PUT /trips/1.json
   def update
-    respond_to do |format|
       if @trip.update(trip_params)
-        format.html { redirect_to @trip, notice: 'Trip was successfully updated.' }
-        format.json { render :show, status: :ok, location: @trip }
+        redirect_to trips_path, notice: 'Trip was successfully updated.'
       else
-        format.html { render :edit }
-        format.json { render json: @trip.errors, status: :unprocessable_entity }
-      end
+        redirect_to edit_trip_path, notice: 'Cannot leave information blank.'
     end
   end
 
@@ -59,10 +50,7 @@ class TripsController < ApplicationController
   # DELETE /trips/1.json
   def destroy
     @trip.destroy
-    respond_to do |format|
-      format.html { redirect_to trips_url, notice: 'Trip was successfully removed.' }
-      format.json { head :no_content }
-    end
+    redirect_to trips_path, notice: 'Trip was successfully removed.'
   end
 
   def correct_user
