@@ -1,13 +1,15 @@
 <div class="card">
   <div class="card-header">
-    <h1>Experiences</h1>
+    <h1>Past Experiences with Strong Missions</h1>
   </div>
   <div class="card-body">
     <% @posts.each do |post| %>
     <h5 class="card-title"><%= post.name %></h5>
     <p class="card-text"><%= post.experience %></p>
     <%= link_to 'Show', post_path(post), class:'btn btn-secondary' %>
-    <%= link_to 'Edit', edit_post_path(post), class:'btn btn-secondary' %>
+    <% if post.user == current_user %>
+      <%= link_to 'Edit', edit_post_path(post), class:'btn btn-secondary' %>
+    <% end %>
     <br/><br/>
     <% end %>
   </div>
