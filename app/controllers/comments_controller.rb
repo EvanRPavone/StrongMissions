@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
     before_action :authenticate_user!, except: [:index, :show]
-    before_action :set_comment, only: [:show, :edit, :update]
+    before_action :set_comment, only: [:show, :edit, :update, :destroy]
     before_action :redirect_if_not_comment_author, only: [:edit, :update]
  
    def index
@@ -25,9 +25,9 @@ class CommentsController < ApplicationController
    def create
      @comment = current_user.comments.build(comment_params)
      if @comment.save
-       redirect_to comments_path
+       redirect_to comments_path, notice: 'Comment has been added.'
      else
-       render new_comment_path
+       redirect_to new_comment_path, notice: 'Cannot submit with blank information.'
      end
    end
  
@@ -44,6 +44,11 @@ class CommentsController < ApplicationController
      else
        render :edit
      end
+   end
+
+   def destroy
+    @comment.destroy
+    redirect_to posts_path, notice:'Comment has been deleted.'
    end
  
    private

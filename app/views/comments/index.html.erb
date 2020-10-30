@@ -11,6 +11,9 @@
         <h5 class="card-title"><%= c.user.email %> says:</h5>
         <p class="card-text">"<%= c.content%>"</p>
         <p class="card-text">About this post: <strong><%= link_to c.post.name, post_path(c.post_id) %></strong></p>
+        <% if c.user == current_user %>
+          <%= link_to 'Destroy', c, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-secondary' %>
+        <% end %>
     <% end %>
   </div>
 </div>

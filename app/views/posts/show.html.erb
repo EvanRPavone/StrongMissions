@@ -22,6 +22,9 @@
     <% @post.comments.each do |c| %>
         <h5 class="card-title"><%= c.user.email %> says:</h5>
         <p class="card-text">"<%= link_to c.content, comment_path(c) %>"</p>
+        <% if c.user == current_user %>
+          <%= link_to 'Delete', c, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-secondary' %>
+        <% end %>
     <% end %>
   </div>
 </div>

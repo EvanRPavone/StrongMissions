@@ -52,7 +52,7 @@ class PostsController < ApplicationController
       redirect_to posts_path, notice: 'Post was successfully removed.'
     end
   
-    def correct_user
+    def correct_user #finds the post_id that is associated to the current_user id. if the user does not own that post then it will redirect them to the posts index page with a notice.
       @post = current_user.posts.find_by(id: params[:id])
       redirect_to posts_path, notice: 'not authorized to edit this post' if @post.nil?
     end
