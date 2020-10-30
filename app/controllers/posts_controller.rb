@@ -6,7 +6,7 @@ class PostsController < ApplicationController
     # GET /posts
     # GET /posts.json
     def index
-      @posts = Post.most_comments
+      @posts = Post.most_comments #in post model. shows the post with most comments in descending order.
     end
   
     # GET /posts/1
@@ -31,7 +31,7 @@ class PostsController < ApplicationController
       if @post.save
         redirect_to posts_path, notice: 'Post was successfully created.'
       else
-        redirect_to new_post_path, notice: 'Cannot leave information blank.'
+        redirect_to new_post_path, notice: 'Cannot leave information blank.' #if the information is left blank then it will keep them on the new post path and give them a notice.
       end
     end
   
@@ -41,7 +41,7 @@ class PostsController < ApplicationController
       if @post.update(post_params)
         redirect_to posts_path, notice: 'Post was successfully updated.'
       else
-        redirect_to edit_post_path, notice: 'Cannot Leave information blank.'
+        redirect_to edit_post_path, notice: 'Cannot Leave information blank.'  #if the information is left blank then it will keep them on the edit post path and give them a notice.
       end
     end
   
@@ -49,7 +49,7 @@ class PostsController < ApplicationController
     # DELETE /posts/1.json
     def destroy
       @post.destroy
-      redirect_to posts_path, notice: 'Post was successfully removed.'
+      redirect_to posts_path, notice: 'Post was successfully removed.' #only admin can delete post. delete comments first and then delete post. If you delete post with comments it will raise an error.
     end
   
     def correct_user #finds the post_id that is associated to the current_user id. if the user does not own that post then it will redirect them to the posts index page with a notice.
