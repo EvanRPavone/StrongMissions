@@ -3,6 +3,10 @@
 <div class="card">
   <div class="card-header">
     <h1>Trips</h1>
+    <%= form_tag('/trips', {:method => :get}) do %>
+      <%= text_field_tag :group_name %>
+      <%= submit_tag %>
+    <% end %>
   </div>
   <div class="card-body">
     <table class="table table-hover table-bordered">

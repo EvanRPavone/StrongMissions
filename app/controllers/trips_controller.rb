@@ -6,7 +6,11 @@ class TripsController < ApplicationController
   # GET /trips
   # GET /trips.json
   def index
-    @trips = Trip.all
+    if params[:group_name]
+      @trips = Trip.search(params[:group_name])
+    else
+      @trips = Trip.all
+    end
   end
 
   # GET /trips/1
@@ -53,7 +57,7 @@ class TripsController < ApplicationController
     redirect_to trips_path, notice: 'Trip was successfully removed.'
   end
 
-  def correct_user
+  def correct_user #finds the trip_id that is associated to the current_user id. if the user does not own that trip then it will redirect them to the trip index page with a notice.
     @trip = current_user.trips.find_by(id: params[:id])
     redirect_to trips_path, notice: 'not authorized to edit this trip' if @trip.nil?
   end
